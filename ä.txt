@@ -1,0 +1,17 @@
+SELECT 
+    a.id_pareja AS pareja, 
+    e.id_categoria AS categoria,
+    d.siglas AS universidad, 
+    f.lugar AS lugar,
+    f.tiempo AS tiempo
+FROM parejas a
+JOIN universidades d
+ON d.id_universidad = a.id_universidad
+JOIN categorias e
+ON e.id_categoria = a.id_categoria
+LEFT JOIN resultados f
+ON f.id_pareja = a.id_pareja
+ORDER BY a.id_categoria AND f.lugar;
+
+
+DELETE FROM participantes; DELETE FROM parejas;

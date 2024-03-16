@@ -1,0 +1,124 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.imagenn
+{
+    margin-left: 390px;
+}
+
+body
+{
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../assets/img/fondo9.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.backgrond-images::before{
+    opacity: 20%;
+}
+
+.wrapper
+{
+   padding-top: 150px;
+    user-select: none;
+
+}
+
+.wrapper .time
+{
+    height: 100px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255 ,255 ,255 ,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-shadow: 10px 10px 10px rgba(255, 0, 0, 0.5);
+  
+}
+
+.wrapper .time span
+{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100px;
+    text-align: center;
+    font-size: 75px;
+    font-weight: 500;
+    color: #333;
+}
+
+
+.time span.colon {
+    width: 10 px;
+
+}
+
+.time span.ms-colon, .time span {
+    color: #7d2ae8;
+}
+
+.wrapper .buttons
+{
+    text-align: center;
+    margin-top: 20px;
+}
+.buttons button
+{
+    padding: 6px 16px;
+    outline:  none;
+    border: none;
+    margin: 0 5px;
+    color: #7d2ae8;
+    background: white;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .09);
+    
+
+}
+input
+{
+    padding: 6px 16px;
+    outline:  none;
+    border: none;
+    margin: 0 5px;
+    color: #7d2ae8;
+    background: white;
+    font-size: 19px;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .09);
+    
+    
+}
+
+.buttons button.active, 
+.buttons button.stopActive
+{
+    pointer-events: none;
+    opacity: .7;
+}
+
+h1
+{
+    text-align: center;
+    padding-bottom: 20px;
+    color: rgb(0, 0, 0);
+}
+
+
+
