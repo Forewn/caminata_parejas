@@ -1,5 +1,6 @@
 <?php
-
+    //session_start((;
+    //(!isset($_SESSION['id']))? header('Location: index.html') : null;
     include "../assets/lib/fpdf/fpdf.php";
 
     class Pdf extends FPDF {
@@ -7,7 +8,7 @@
 
         public function header(){
             $this->SetFont("Arial", '', 12);
-            $this->Cell(190, 10, "Nada pues aqui va el encabezado del listado que se generara", 0, 0, 'C');
+            $this->Cell(190, 10, "República Boliariana de Venezuela", 0, 0, 'C');
         }
     
         public function body() {

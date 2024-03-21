@@ -1,4 +1,6 @@
 <?php
+    //session_start((;
+    //(!isset($_SESSION['id']))? header('Location: index.html') : null;
     class Pareja{
         private $miembro1;
         private $miembro2;
@@ -33,7 +35,7 @@
 
         private function getIdPareja(){
             require "./conn.php";
-            $sql = "SELECT * FROM parejas WHERE id_categoria = ".$this->categoria;
+            $sql = "SELECT * FROM parejas;";
             $result = $conn->query($sql);
             return $result->num_rows+1;
         }
@@ -84,7 +86,7 @@
                             // echo $conn->error;
                             if($result){
                                 echo "Pareja Registrada Exitosamente!";
-                                header('Location: ../index.php');
+                                header('Location: ../registro.php');
                             }
                         }
                     }
@@ -104,7 +106,7 @@
             '".$this->miembro1['apellido']."', '".$this->miembro1['apellido2']."', ".$this->miembro1['cargo'].");";
             $result = $conn->query($sql);
             if($result){
-                $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol)
+                    $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol)
                 VALUES('".$this->miembro2['cedula']."', '".$this->miembro2['nombre']."', '".$this->miembro2['nombre2']."',
                 '".$this->miembro2['apellido']."', '".$this->miembro2['apellido2']."', '".$this->miembro2['cargo']."');";
                 $result = $conn->query($sql);

@@ -1,4 +1,6 @@
 <?php
+// //session_start((;
+//(!isset($_SESSION['id']))? header('Location: index.html') : null;
 require("conn.php");
 
 // Obtener los datos de la petición AJAX
