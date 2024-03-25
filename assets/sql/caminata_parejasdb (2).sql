@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2024 a las 18:14:24
+-- Tiempo de generación: 25-03-2024 a las 21:35:11
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,7 +58,13 @@ CREATE TABLE `miembros_parejas` (
 
 INSERT INTO `miembros_parejas` (`id_pareja`, `cedula`) VALUES
 (1, 29699505),
-(1, 12345678);
+(1, 12345678),
+(2, 87654321),
+(2, 88888888),
+(3, 12345679),
+(3, 12345670),
+(4, 11111111),
+(4, 22222222);
 
 -- --------------------------------------------------------
 
@@ -77,7 +83,10 @@ CREATE TABLE `parejas` (
 --
 
 INSERT INTO `parejas` (`id_pareja`, `id_categoria`, `id_universidad`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 1, 2),
+(3, 3, 1),
+(4, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -91,6 +100,7 @@ CREATE TABLE `participantes` (
   `nombre2` varchar(20) NOT NULL,
   `apellido` varchar(20) NOT NULL,
   `apellido2` varchar(20) NOT NULL,
+  `sexo` int(3) NOT NULL,
   `id_rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -98,11 +108,15 @@ CREATE TABLE `participantes` (
 -- Volcado de datos para la tabla `participantes`
 --
 
-INSERT INTO `participantes` (`cedula`, `nombre`, `nombre2`, `apellido`, `apellido2`, `id_rol`) VALUES
-(12345678, 'Luis', 'Aron', 'Rojas', 'Porras', 1),
-(29699505, 'Jhosmar', 'David', 'Suarez', 'Contreras', 1),
-(87654321, 'Jesus', 'Jesus', 'Perez', 'Perez', 3),
-(88888888, 'Ashly', 'Hanneiker', 'Torres', 'Algo', 2);
+INSERT INTO `participantes` (`cedula`, `nombre`, `nombre2`, `apellido`, `apellido2`, `sexo`, `id_rol`) VALUES
+(11111111, 'a', 'a', 'A', 'A', 1, 3),
+(12345670, 'Angel', 'Gabriel', 'Chaparro', 'Chaparro', 0, 2),
+(12345678, 'Luis', 'Aron', 'Rojas', 'Porras', 1, 1),
+(12345679, 'Ulardio', 'Pablo', 'Parra', 'Parra', 1, 1),
+(22222222, 'bb', 'bb', 'BB', 'BB', 0, 2),
+(29699505, 'Jhosmar', 'David', 'Suarez', 'Contreras', 0, 1),
+(87654321, 'Jesus', 'Manuel', 'Perez', 'Perez', 0, 3),
+(88888888, 'Ashly', 'Hanneiker', 'Torres', 'Algo', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -118,6 +132,13 @@ CREATE TABLE `resultados` (
   `tiempo` time(2) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT 'descalificado o participando'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `resultados`
+--
+
+INSERT INTO `resultados` (`id_resultado`, `id_pareja`, `id_categoria`, `lugar`, `tiempo`, `status`) VALUES
+(11, 1, 1, 1, '00:00:09.41', 1);
 
 -- --------------------------------------------------------
 
@@ -162,6 +183,25 @@ INSERT INTO `universidades` (`id_universidad`, `siglas`, `universidad`) VALUES
 (4, 'UNET', 'Universidad Nacional Experimental del Táchira'),
 (5, 'UPTAI', 'Universidad Politécnica Territorial Agroindustrial del Estado Táchira'),
 (6, 'UBA', 'Universidad Bicentenaria de Aragua');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  `contrasena` varchar(63) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `contrasena`) VALUES
+(1, 'chaparro', '1234');
 
 -- --------------------------------------------------------
 
@@ -252,7 +292,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`

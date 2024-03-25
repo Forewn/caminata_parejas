@@ -1,6 +1,9 @@
 <?php
-    //session_start((;
-    //(!isset($_SESSION['id']))? header('Location: index.html') : null;
+    session_start();
+    if(!isset($_SESSION['id'])){
+        session_destroy();
+        header('Location: index.html');
+    }
 ?>
 
 <link rel="stylesheet" href="./css/navbar.css">
@@ -13,6 +16,8 @@
         <ul class="nav-links">
             <li><a href="./cronometro.php">Cronometro</a></li>
             <li><a href="./registro.php">Registro</a></li>
+            <li><a href="./participantes.php">Listado</a></li>
+            <li><a href="./php/logout.php">Cerrar Sesión</a></li>
         </ul>            
     </nav>
     <a class="btn" href="./php/resultados.php"><button>PDF</button></a>

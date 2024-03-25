@@ -1,6 +1,5 @@
 <?php
-    // //session_start((;
-    // session_destroy();
+
     class Usuario{
         private $password, $username;
 
@@ -21,9 +20,9 @@
                 if($this->password == $usuario['contrasena']){
                     //acceso habilitado
                     echo 200;
-                    //session_start((;
-                    // $_SESSION['id'] = $usuario['id_usuario'];
-                    // $_SESSION['username'] = $usuario['usuario'];
+                    session_start();
+                    $_SESSION['id'] = $usuario['id_usuario'];
+                    $_SESSION['username'] = $usuario['usuario'];
                 }
                 else{
                     //contrasena incorrecta

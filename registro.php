@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="video">
-        <video src="./assets/video/video (2160p).mp4" autoplay loop muted></video>
+        <video src="./assets/video/running.mp4" autoplay loop muted></video>
     </div>
     <header>
         <?php include "./modulos/navbar.php"; ?>
@@ -18,7 +18,7 @@
             <img src="./assets/img/finish-line.png" alt="Maraton">
         </div>
         <section>
-            <h1>MARATON INTERUNIVERSITARIO 2024</h1>
+            <h1>Caminata de la Confraternidad Universitaria</h1>
             <h2>Formulario de Inscripcion</h2>
         </section>
     </header>
@@ -41,7 +41,7 @@
             <div class="row mt-3 mb-3">
                 <div class="col-sm-12 col-lg-6">
                     <div>
-                        <h1 class="text-center">Miembro 1</h1>
+                        <h1 class="text-center">Caballero</h1>
                     </div>
                     <div class="row ">
                         <div class="col-sm-12 col-lg-2 text-center">
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-6">
                     <div>
-                        <h1 class="text-center">Miembro 2</h1>
+                        <h1 class="text-center">Dama</h1>
                     </div>
                     <div class="row ">
                         <div class="col-sm-12 col-lg-2 text-center">

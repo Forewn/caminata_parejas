@@ -16,7 +16,8 @@
                 'nombre2' => htmlspecialchars($_POST['2donombre1']),
                 'apellido' => htmlspecialchars($_POST['apellido1']),
                 'apellido2' => htmlspecialchars($_POST['2doapellido1']),
-                'cargo' => htmlspecialchars($_POST['cargo1'])
+                'cargo' => htmlspecialchars($_POST['cargo1']),
+                'genero' => 1
             );
 
             $this->miembro2 = array(
@@ -25,7 +26,8 @@
                 'nombre2' => htmlspecialchars($_POST['2donombre2']),
                 'apellido' => htmlspecialchars($_POST['apellido2']),
                 'apellido2' => htmlspecialchars($_POST['2doapellido2']),
-                'cargo' => htmlspecialchars($_POST['cargo2'])
+                'cargo' => htmlspecialchars($_POST['cargo2']),
+                'genero' => 0
             );
 
             $this->institucion = htmlspecialchars($_POST['institucion']);
@@ -101,14 +103,14 @@
         }
 
         private function insertMembers($conn){
-            $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol)
+            $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol, sexo)
             VALUES('".$this->miembro1['cedula']."', '".$this->miembro1['nombre']."', '".$this->miembro1['nombre2']."',
-            '".$this->miembro1['apellido']."', '".$this->miembro1['apellido2']."', ".$this->miembro1['cargo'].");";
+            '".$this->miembro1['apellido']."', '".$this->miembro1['apellido2']."', ".$this->miembro1['cargo'].", ".$this->miembro1['genero'].");";
             $result = $conn->query($sql);
             if($result){
-                    $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol)
+                    $sql = "INSERT INTO participantes(cedula, nombre, nombre2, apellido, apellido2, id_rol, sexo)
                 VALUES('".$this->miembro2['cedula']."', '".$this->miembro2['nombre']."', '".$this->miembro2['nombre2']."',
-                '".$this->miembro2['apellido']."', '".$this->miembro2['apellido2']."', '".$this->miembro2['cargo']."');";
+                '".$this->miembro2['apellido']."', '".$this->miembro2['apellido2']."', '".$this->miembro2['cargo']."', ".$this->miembro2['genero'].");";
                 $result = $conn->query($sql);
                 if($result){
                     return 1;

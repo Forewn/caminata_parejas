@@ -4,9 +4,7 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     box-sizing: border-box;
 }
-body{
-    height: fit-content;
-}
+
 
 .form-control{
     margin: 5px 0;
@@ -28,6 +26,12 @@ header section h2{
     height: 113%;
     margin-top: -100px;
     filter: opacity(10%);
+}
+
+@media (max-width: 600px) {
+    .video video{
+        display: none;
+    }
 }
 
 .img1{
