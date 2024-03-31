@@ -1,6 +1,9 @@
 <?php
-    //session_start((;
-    //(!isset($_SESSION['id']))? header('Location: index.html') : null;
+    session_start();
+    if(!isset($_SESSION['id'])){
+        session_destroy();
+        header('Location: index.html');
+    }
     class Pareja{
         private $miembro1;
         private $miembro2;

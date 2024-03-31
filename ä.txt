@@ -15,3 +15,15 @@ ORDER BY a.id_categoria AND f.lugar;
 
 
 DELETE FROM participantes; DELETE FROM parejas;
+
+
+SELECT m.id_pareja AS pareja, p1.cedula, p1.nombre, p1.nombre2, p1.apellido, p1.apellido2, p1.sexo, p1.id_rol AS rol 
+FROM miembros_parejas m 
+JOIN participantes p1 
+ON p1.cedula = m.cedula;
+
+SELECT m.id_pareja AS pareja, p1.cedula, p1.nombre, p1.nombre2, p1.apellido, p1.apellido2, p1.sexo, p1.id_rol AS rol 
+FROM miembros_parejas m 
+JOIN participantes p1 
+ON p1.cedula = m.cedula;
+

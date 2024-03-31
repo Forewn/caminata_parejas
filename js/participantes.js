@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', ()=>{
+    const pdfbtn = document.getElementById('toPDF');
+
+    pdfbtn.addEventListener('click', ()=>{
+        window.open("./php/listado_parejas.php", "_blank");
+    });
+})
+
 
 const search = document.querySelector('.input-group input'),
     table_rows = document.querySelectorAll('tbody tr'),
