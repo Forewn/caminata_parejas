@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2024 a las 15:54:42
+-- Tiempo de generación: 12-04-2024 a las 03:39:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -29,17 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
-  `categoria` varchar(40) DEFAULT NULL
+  `categoria` varchar(40) DEFAULT NULL,
+  `siglas` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
-(1, 'Estudiantes Universitarios'),
-(2, 'Comunidad Universitaria'),
-(3, 'Universitaria Mixta');
+INSERT INTO `categorias` (`id_categoria`, `categoria`, `siglas`) VALUES
+(1, 'Estudiantes Universitarios', 'E.U.'),
+(2, 'Comunidad Universitaria', 'C.U.'),
+(3, 'Universitaria Mixta', 'U.M.');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,7 @@ CREATE TABLE `parejas` (
   `id_pareja` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `id_universidad` int(11) NOT NULL,
-  `falta` int(3) NOT NULL
+  `falta` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -274,7 +275,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
