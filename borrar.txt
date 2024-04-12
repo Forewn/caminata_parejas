@@ -1,0 +1,4 @@
+DELETE FROM miembros_parejas;
+DELETE FROM participantes;
+DELETE FROM resultados;
+DELETE FROM parejas;

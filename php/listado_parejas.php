@@ -18,7 +18,7 @@
             $this->Cell(190, 10, utf8_decode("Universidad Nacional Experimental Politécnica de la Fuerza Armada"), 0, 0, 'C');
             $this->Ln($this->interlineado);
             $this->Cell(190, 10, utf8_decode("Caminata de la Confraternidad Universitaria"), 0, 0, 'C');
-            $this->Ln($this->interlineado*2);
+            $this->Ln($this->interlineado*4);
         }
 
         public function body(){
@@ -42,14 +42,14 @@
             $this->SetFont("Arial", 'B', 12);
             $this->Write(5, "#");
             $this->SetX(20);
-            $this->Write(5, "Caballero");
-            $this->SetX(60);
-            $this->Write(5, "Cedula");
-            $this->SetX(82);
             $this->Write(5, "Dama");
-            $this->SetX(122);
+            $this->SetX(76);
             $this->Write(5, "Cedula");
-            $this->SetX(145);
+            $this->SetX(100);
+            $this->Write(5, "Caballero");
+            $this->SetX(157);
+            $this->Write(5, "Cedula");
+            $this->SetX(178);
             $this->Write(5, "Categoria");
             $this->SetFont("Arial", '', 12);
             $sql = "SELECT * FROM parejas WHERE id_universidad = '$id';";
@@ -63,19 +63,19 @@
                         $this->Write(5, $miembro['pareja']);
                         $this->SetX(20);
                         $this->Write(5, utf8_decode($miembro['nombre']." ".$miembro['apellido']));
-                        $this->SetX(60);
+                        $this->SetX(76);
                         $this->Write(5, $miembro['cedula']);
                     }
                     else{
-                        $this->SetX(82);
+                        $this->SetX(100);
                         $this->Write(5, utf8_decode($miembro['nombre']." ".$miembro['apellido']));
-                        $this->SetX(122);
+                        $this->SetX(157);
                         $this->Write(5, $miembro['cedula']);
-                        $this->SetX(145);
-                        $sql2 = "SELECT categoria FROM categorias WHERE id_categoria = ".$pareja['id_categoria'];
+                        $this->SetX(178);
+                        $sql2 = "SELECT * FROM categorias WHERE id_categoria = ".$pareja['id_categoria'];
                         $result2 = $conn->query($sql2);
                         $categoria = $result2->fetch_assoc();
-                        $this->Write(5, $categoria['categoria']);
+                        $this->Write(5, $categoria['siglas']);
                     }
                 }
             }

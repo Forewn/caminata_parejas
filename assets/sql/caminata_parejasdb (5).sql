@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-03-2024 a las 21:35:11
+-- Tiempo de generación: 01-04-2024 a las 15:54:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -52,20 +52,6 @@ CREATE TABLE `miembros_parejas` (
   `cedula` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `miembros_parejas`
---
-
-INSERT INTO `miembros_parejas` (`id_pareja`, `cedula`) VALUES
-(1, 29699505),
-(1, 12345678),
-(2, 87654321),
-(2, 88888888),
-(3, 12345679),
-(3, 12345670),
-(4, 11111111),
-(4, 22222222);
-
 -- --------------------------------------------------------
 
 --
@@ -75,18 +61,9 @@ INSERT INTO `miembros_parejas` (`id_pareja`, `cedula`) VALUES
 CREATE TABLE `parejas` (
   `id_pareja` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
-  `id_universidad` int(11) NOT NULL
+  `id_universidad` int(11) NOT NULL,
+  `falta` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `parejas`
---
-
-INSERT INTO `parejas` (`id_pareja`, `id_categoria`, `id_universidad`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 3, 1),
-(4, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -104,20 +81,6 @@ CREATE TABLE `participantes` (
   `id_rol` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `participantes`
---
-
-INSERT INTO `participantes` (`cedula`, `nombre`, `nombre2`, `apellido`, `apellido2`, `sexo`, `id_rol`) VALUES
-(11111111, 'a', 'a', 'A', 'A', 1, 3),
-(12345670, 'Angel', 'Gabriel', 'Chaparro', 'Chaparro', 0, 2),
-(12345678, 'Luis', 'Aron', 'Rojas', 'Porras', 1, 1),
-(12345679, 'Ulardio', 'Pablo', 'Parra', 'Parra', 1, 1),
-(22222222, 'bb', 'bb', 'BB', 'BB', 0, 2),
-(29699505, 'Jhosmar', 'David', 'Suarez', 'Contreras', 0, 1),
-(87654321, 'Jesus', 'Manuel', 'Perez', 'Perez', 0, 3),
-(88888888, 'Ashly', 'Hanneiker', 'Torres', 'Algo', 1, 2);
-
 -- --------------------------------------------------------
 
 --
@@ -132,13 +95,6 @@ CREATE TABLE `resultados` (
   `tiempo` time(2) DEFAULT NULL,
   `status` int(11) NOT NULL COMMENT 'descalificado o participando'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `resultados`
---
-
-INSERT INTO `resultados` (`id_resultado`, `id_pareja`, `id_categoria`, `lugar`, `tiempo`, `status`) VALUES
-(11, 1, 1, 1, '00:00:09.41', 1);
 
 -- --------------------------------------------------------
 
@@ -206,6 +162,23 @@ INSERT INTO `usuarios` (`id_usuario`, `usuario`, `contrasena`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `v_participantes`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `v_participantes` (
+`pareja` int(11)
+,`cedula` int(11)
+,`nombre` varchar(20)
+,`nombre2` varchar(20)
+,`apellido` varchar(20)
+,`apellido2` varchar(20)
+,`sexo` int(3)
+,`rol` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura Stand-in para la vista `v_resultados_parejas`
 -- (Véase abajo para la vista actual)
 --
@@ -216,6 +189,15 @@ CREATE TABLE `v_resultados_parejas` (
 ,`lugar` int(11)
 ,`tiempo` time(2)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `v_participantes`
+--
+DROP TABLE IF EXISTS `v_participantes`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_participantes`  AS   (select `m`.`id_pareja` AS `pareja`,`p1`.`cedula` AS `cedula`,`p1`.`nombre` AS `nombre`,`p1`.`nombre2` AS `nombre2`,`p1`.`apellido` AS `apellido`,`p1`.`apellido2` AS `apellido2`,`p1`.`sexo` AS `sexo`,`p1`.`id_rol` AS `rol` from (`miembros_parejas` `m` join `participantes` `p1` on(`p1`.`cedula` = `m`.`cedula`)))  ;
 
 -- --------------------------------------------------------
 
@@ -292,7 +274,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
