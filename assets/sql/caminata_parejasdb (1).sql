@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-04-2024 a las 03:39:41
+-- Tiempo de generación: 12-04-2025 a las 17:37:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,8 +39,9 @@ CREATE TABLE `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`, `siglas`) VALUES
 (1, 'Estudiantes Universitarios', 'E.U.'),
-(2, 'Comunidad Universitaria', 'C.U.'),
-(3, 'Universitaria Mixta', 'U.M.');
+(2, 'Invitados Especiales', 'I.U.'),
+(3, 'Universitaria Mixta', 'U.M.'),
+(4, 'Particular', 'P.A.');
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id_rol`, `rol`) VALUES
 (1, 'Estudiante'),
 (2, 'Profesor'),
-(3, 'Personal');
+(3, 'Invitado'),
+(4, 'Particular');
 
 -- --------------------------------------------------------
 
@@ -139,7 +141,26 @@ INSERT INTO `universidades` (`id_universidad`, `siglas`, `universidad`) VALUES
 (3, 'UNES', 'Universidad Nacional Experimental de la Seguridad'),
 (4, 'UNET', 'Universidad Nacional Experimental del Táchira'),
 (5, 'UPTAI', 'Universidad Politécnica Territorial Agroindustrial del Estado Táchira'),
-(6, 'UBA', 'Universidad Bicentenaria de Aragua');
+(6, 'UBA', 'Universidad Bicentenaria de Aragua'),
+(7, 'CANTV', 'Compañía Anónima Nacional Teléfonos de Venezuela'),
+(8, 'GNB', 'Guardia Nacional Bolivariana'),
+(9, 'RGP', 'Regimiento Guardia del Pueblo'),
+(10, 'REDI', 'Regiones Estratégicas de Defensa Integral'),
+(11, 'ZODI', ' Zona Operativa de Defensa Integral'),
+(12, 'DSU', 'Destacamento de Seguridad Urbana'),
+(13, 'ASC', 'Alcaldia de San Cristobal'),
+(14, 'CL', 'Consejo Legislativo'),
+(15, 'BOMB', 'Bomberos de San Cristobal'),
+(16, 'PC', 'Proteccion Civil'),
+(17, 'PT', 'Politachira'),
+(18, 'PNB', 'Policia Nacional Bolivariana'),
+(19, 'LT', 'Loteria del Tachira'),
+(20, 'VNET', 'Empresa de Internet en Venezuela'),
+(21, 'DLP', 'Distribuidora las Palmeras'),
+(22, 'MA', 'Min Aguas'),
+(23, 'CS', 'Ciro Sanchez'),
+(24, 'MM', 'Multi Max'),
+(25, 'DAKA', 'DAKA');
 
 -- --------------------------------------------------------
 
@@ -269,25 +290,25 @@ ALTER TABLE `universidades`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `universidades`
 --
 ALTER TABLE `universidades`
-  MODIFY `id_universidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_universidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
